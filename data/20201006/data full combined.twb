@@ -1,0 +1,2857 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20201.20.0219.0753                               -->
+<workbook original-version='18.1' source-build='2020.1.0 (20201.20.0219.0753)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <SheetIdentifierTracking />
+    <SpatialFileLayer />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='NEF_ecoregions_ONNAD1983' inline='true' name='federated.1ygvcap1qerptb1a83nok17iykel' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='NEF_ecoregions_ONNAD1983' name='ogrdirect.1v0ykzf0kbesoz1cnpp4i1shayhn'>
+            <connection class='ogrdirect' directory='C:/Users/WangJon/OneDrive - Government of Ontario/Desktop/Tableau Help' filename='NEF_ecoregions_ONNAD1983.shp' ogr-grid-shift-folder='C:\Program Files\Tableau\Tableau 2020.1\local\proj4' password='' server='' tablename='' />
+          </named-connection>
+          <named-connection caption='OFBN Plots NAD 1983_NEF_Ecoregions' name='ogrdirect.0ukv1030nc2rrv1dsn9c50vix7oe'>
+            <connection class='ogrdirect' directory='C:/Users/WangJon/OneDrive - Government of Ontario/Desktop/Tableau Help' filename='OFBN Plots NAD 1983_NEF_Ecoregions.shp' ogr-grid-shift-folder='C:\Program Files\Tableau\Tableau 2020.1\local\proj4' password='' server='' tablename='' />
+          </named-connection>
+          <named-connection caption='OFBN1 DI NEF ER' name='excel-direct.0kc59ki138y1m01cjzcag1rb888o'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Users/WangJon/OneDrive - Government of Ontario/Desktop/Tableau Help/OFBN1 DI NEF ER.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation join='right' type='join'>
+          <clause type='join'>
+            <expression op='AND'>
+              <expression op='='>
+                <expression op='INT([OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PlotNo])' />
+                <expression op='INT([DI Plot-Year Averages].[Plot])' />
+              </expression>
+              <expression op='='>
+                <expression op='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_NAM]' />
+                <expression op='[DI Plot-Year Averages].[NEFEcoregion]' />
+              </expression>
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='INT([OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PlotNo])' />
+                <expression op='INT([OFBN_Grid.shp].[Plot])' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[NEF_ecoregions_ONNAD1983.shp].[REGION_NAM]' />
+                  <expression op='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_NAM]' />
+                </expression>
+              </clause>
+              <relation connection='ogrdirect.1v0ykzf0kbesoz1cnpp4i1shayhn' name='NEF_ecoregions_ONNAD1983.shp' table='[NEF_ecoregions_ONNAD1983.shp]' type='table'>
+                <columns>
+                  <column datatype='integer' name='FID_ecoreg' ordinal='0' />
+                  <column datatype='real' name='AREA' ordinal='1' />
+                  <column datatype='real' name='PERIMETER' ordinal='2' />
+                  <column datatype='integer' name='REGION_' ordinal='3' />
+                  <column datatype='integer' name='REGION_ID' ordinal='4' />
+                  <column datatype='integer' name='ECOREGION' ordinal='5' />
+                  <column datatype='string' name='REGION_NAM' ordinal='6' />
+                  <column datatype='string' name='REGION_NOM' ordinal='7' />
+                  <column datatype='integer' name='ECOZONE' ordinal='8' />
+                  <column datatype='integer' name='FID_Ontari' ordinal='9' />
+                  <column datatype='real' name='AREA_1' ordinal='10' />
+                  <column datatype='real' name='PERIMETE_1' ordinal='11' />
+                  <column datatype='integer' name='ONTGL_' ordinal='12' />
+                  <column datatype='integer' name='ONTGL_ID' ordinal='13' />
+                  <column datatype='integer' name='ONT_' ordinal='14' />
+                  <column datatype='integer' name='ONT_ID' ordinal='15' />
+                  <column datatype='real' name='ID' ordinal='16' />
+                  <column datatype='real' name='COUNT' ordinal='17' />
+                  <column datatype='real' name='HECTARES' ordinal='18' />
+                  <column datatype='integer' name='GL_' ordinal='19' />
+                  <column datatype='integer' name='GL_ID' ordinal='20' />
+                  <column datatype='real' name='AREA_METER' ordinal='21' />
+                  <column datatype='real' name='PERIMETER_' ordinal='22' />
+                  <column datatype='string' name='LAKE' ordinal='23' />
+                  <column datatype='string' name='DETAIL' ordinal='24' />
+                  <column datatype='spatial' name='Geometry' ordinal='25' />
+                </columns>
+              </relation>
+              <relation connection='ogrdirect.0ukv1030nc2rrv1dsn9c50vix7oe' name='OFBN Plots NAD 1983_NEF_Ecoregions.shp' table='[OFBN Plots NAD 1983_NEF_Ecoregions.shp]' type='table'>
+                <columns>
+                  <column datatype='integer' name='FID_Plot_F' ordinal='0' />
+                  <column datatype='real' name='Tier' ordinal='1' />
+                  <column datatype='real' name='PlotNo' ordinal='2' />
+                  <column datatype='string' name='Plot' ordinal='3' />
+                  <column datatype='string' name='Descriptio' ordinal='4' />
+                  <column datatype='real' name='Year' ordinal='5' />
+                  <column datatype='real' name='UTM' ordinal='6' />
+                  <column datatype='string' name='Zone' ordinal='7' />
+                  <column datatype='real' name='Easting' ordinal='8' />
+                  <column datatype='real' name='Northing' ordinal='9' />
+                  <column datatype='string' name='Descript_1' ordinal='10' />
+                  <column datatype='real' name='lat' ordinal='11' />
+                  <column datatype='real' name='lon' ordinal='12' />
+                  <column datatype='real' name='elevation' ordinal='13' />
+                  <column datatype='integer' name='FID_ecoreg' ordinal='14' />
+                  <column datatype='integer' name='FID_ecor_1' ordinal='15' />
+                  <column datatype='real' name='AREA' ordinal='16' />
+                  <column datatype='real' name='PERIMETER' ordinal='17' />
+                  <column datatype='integer' name='REGION_' ordinal='18' />
+                  <column datatype='integer' name='REGION_ID' ordinal='19' />
+                  <column datatype='integer' name='ECOREGION' ordinal='20' />
+                  <column datatype='string' name='REGION_NAM' ordinal='21' />
+                  <column datatype='string' name='REGION_NOM' ordinal='22' />
+                  <column datatype='integer' name='ECOZONE' ordinal='23' />
+                  <column datatype='integer' name='FID_Ontari' ordinal='24' />
+                  <column datatype='real' name='AREA_1' ordinal='25' />
+                  <column datatype='real' name='PERIMETE_1' ordinal='26' />
+                  <column datatype='integer' name='ONTGL_' ordinal='27' />
+                  <column datatype='integer' name='ONTGL_ID' ordinal='28' />
+                  <column datatype='integer' name='ONT_' ordinal='29' />
+                  <column datatype='integer' name='ONT_ID' ordinal='30' />
+                  <column datatype='real' name='ID' ordinal='31' />
+                  <column datatype='real' name='COUNT' ordinal='32' />
+                  <column datatype='real' name='HECTARES' ordinal='33' />
+                  <column datatype='integer' name='GL_' ordinal='34' />
+                  <column datatype='integer' name='GL_ID' ordinal='35' />
+                  <column datatype='real' name='AREA_METER' ordinal='36' />
+                  <column datatype='real' name='PERIMETER_' ordinal='37' />
+                  <column datatype='string' name='LAKE' ordinal='38' />
+                  <column datatype='string' name='DETAIL' ordinal='39' />
+                  <column datatype='spatial' name='Geometry' ordinal='40' />
+                </columns>
+              </relation>
+            </relation>
+            <relation connection='ogrdirect.1v0ykzf0kbesoz1cnpp4i1shayhn' name='OFBN_Grid.shp' table='[OFBN_Grid.shp]' type='table'>
+              <columns>
+                <column datatype='string' name='Grid_code' ordinal='0' />
+                <column datatype='real' name='Plot' ordinal='1' />
+                <column datatype='spatial' name='Geometry' ordinal='2' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='excel-direct.0kc59ki138y1m01cjzcag1rb888o' name='DI Plot-Year Averages' table='[&apos;DI Plot-Year Averages$&apos;]' type='table'>
+            <columns gridOrigin='A1:D2215:no:A1:D2215:0' header='yes' outcome='6'>
+              <column datatype='integer' name='Plot' ordinal='0' />
+              <column datatype='integer' name='Year' ordinal='1' />
+              <column datatype='real' name='Mean DI' ordinal='2' />
+              <column datatype='string' name='NEFEcoregion' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[AREA (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[AREA]' />
+          <map key='[AREA]' value='[NEF_ecoregions_ONNAD1983.shp].[AREA]' />
+          <map key='[AREA_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[AREA_1]' />
+          <map key='[AREA_1]' value='[NEF_ecoregions_ONNAD1983.shp].[AREA_1]' />
+          <map key='[AREA_METER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[AREA_METER]' />
+          <map key='[AREA_METER]' value='[NEF_ecoregions_ONNAD1983.shp].[AREA_METER]' />
+          <map key='[COUNT (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[COUNT]' />
+          <map key='[COUNT]' value='[NEF_ecoregions_ONNAD1983.shp].[COUNT]' />
+          <map key='[DETAIL (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[DETAIL]' />
+          <map key='[DETAIL]' value='[NEF_ecoregions_ONNAD1983.shp].[DETAIL]' />
+          <map key='[Descript_1]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Descript_1]' />
+          <map key='[Descriptio]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Descriptio]' />
+          <map key='[ECOREGION (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ECOREGION]' />
+          <map key='[ECOREGION]' value='[NEF_ecoregions_ONNAD1983.shp].[ECOREGION]' />
+          <map key='[ECOZONE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ECOZONE]' />
+          <map key='[ECOZONE]' value='[NEF_ecoregions_ONNAD1983.shp].[ECOZONE]' />
+          <map key='[Easting]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Easting]' />
+          <map key='[FID_Ontari (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[FID_Ontari]' />
+          <map key='[FID_Ontari]' value='[NEF_ecoregions_ONNAD1983.shp].[FID_Ontari]' />
+          <map key='[FID_Plot_F]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[FID_Plot_F]' />
+          <map key='[FID_ecor_1]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[FID_ecor_1]' />
+          <map key='[FID_ecoreg (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[FID_ecoreg]' />
+          <map key='[FID_ecoreg]' value='[NEF_ecoregions_ONNAD1983.shp].[FID_ecoreg]' />
+          <map key='[GL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[GL_]' />
+          <map key='[GL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[GL_ID]' />
+          <map key='[GL_ID]' value='[NEF_ecoregions_ONNAD1983.shp].[GL_ID]' />
+          <map key='[GL_]' value='[NEF_ecoregions_ONNAD1983.shp].[GL_]' />
+          <map key='[Geometry (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Geometry]' />
+          <map key='[Geometry (OFBN_Grid.shp)]' value='[OFBN_Grid.shp].[Geometry]' />
+          <map key='[Geometry]' value='[NEF_ecoregions_ONNAD1983.shp].[Geometry]' />
+          <map key='[Grid_code]' value='[OFBN_Grid.shp].[Grid_code]' />
+          <map key='[HECTARES (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[HECTARES]' />
+          <map key='[HECTARES]' value='[NEF_ecoregions_ONNAD1983.shp].[HECTARES]' />
+          <map key='[ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ID]' />
+          <map key='[ID]' value='[NEF_ecoregions_ONNAD1983.shp].[ID]' />
+          <map key='[LAKE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[LAKE]' />
+          <map key='[LAKE]' value='[NEF_ecoregions_ONNAD1983.shp].[LAKE]' />
+          <map key='[Mean DI]' value='[DI Plot-Year Averages].[Mean DI]' />
+          <map key='[NEFEcoregion]' value='[DI Plot-Year Averages].[NEFEcoregion]' />
+          <map key='[Northing]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Northing]' />
+          <map key='[ONTGL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ONTGL_]' />
+          <map key='[ONTGL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ONTGL_ID]' />
+          <map key='[ONTGL_ID]' value='[NEF_ecoregions_ONNAD1983.shp].[ONTGL_ID]' />
+          <map key='[ONTGL_]' value='[NEF_ecoregions_ONNAD1983.shp].[ONTGL_]' />
+          <map key='[ONT_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ONT_]' />
+          <map key='[ONT_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[ONT_ID]' />
+          <map key='[ONT_ID]' value='[NEF_ecoregions_ONNAD1983.shp].[ONT_ID]' />
+          <map key='[ONT_]' value='[NEF_ecoregions_ONNAD1983.shp].[ONT_]' />
+          <map key='[PERIMETER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PERIMETER]' />
+          <map key='[PERIMETER]' value='[NEF_ecoregions_ONNAD1983.shp].[PERIMETER]' />
+          <map key='[PERIMETER_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PERIMETER_]' />
+          <map key='[PERIMETER_]' value='[NEF_ecoregions_ONNAD1983.shp].[PERIMETER_]' />
+          <map key='[PERIMETE_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PERIMETE_1]' />
+          <map key='[PERIMETE_1]' value='[NEF_ecoregions_ONNAD1983.shp].[PERIMETE_1]' />
+          <map key='[Plot (DI Plot-Year Averages)]' value='[DI Plot-Year Averages].[Plot]' />
+          <map key='[Plot (OFBN_Grid.shp)]' value='[OFBN_Grid.shp].[Plot]' />
+          <map key='[PlotNo]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[PlotNo]' />
+          <map key='[Plot]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Plot]' />
+          <map key='[REGION_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_]' />
+          <map key='[REGION_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_ID]' />
+          <map key='[REGION_ID]' value='[NEF_ecoregions_ONNAD1983.shp].[REGION_ID]' />
+          <map key='[REGION_NAM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_NAM]' />
+          <map key='[REGION_NAM]' value='[NEF_ecoregions_ONNAD1983.shp].[REGION_NAM]' />
+          <map key='[REGION_NOM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[REGION_NOM]' />
+          <map key='[REGION_NOM]' value='[NEF_ecoregions_ONNAD1983.shp].[REGION_NOM]' />
+          <map key='[REGION_]' value='[NEF_ecoregions_ONNAD1983.shp].[REGION_]' />
+          <map key='[Tier]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Tier]' />
+          <map key='[UTM]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[UTM]' />
+          <map key='[Year (DI Plot-Year Averages)]' value='[DI Plot-Year Averages].[Year]' />
+          <map key='[Year]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Year]' />
+          <map key='[Zone]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[Zone]' />
+          <map key='[elevation]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[elevation]' />
+          <map key='[lat]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[lat]' />
+          <map key='[lon]' value='[OFBN Plots NAD 1983_NEF_Ecoregions.shp].[lon]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>FID_ecoreg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_ecoreg]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>FID_ecoreg</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>AREA</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETER</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETER]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>PERIMETER</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[REGION_]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>REGION_</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[REGION_ID]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>REGION_ID</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ECOREGION</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ECOREGION]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ECOREGION</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_NAM</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION_NAM]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>REGION_NAM</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_NOM</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION_NOM]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>REGION_NOM</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ECOZONE</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ECOZONE]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ECOZONE</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FID_Ontari</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_Ontari]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>FID_Ontari</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA_1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA_1]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>AREA_1</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETE_1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETE_1]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>PERIMETE_1</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONTGL_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONTGL_]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ONTGL_</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONTGL_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONTGL_ID]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ONTGL_ID</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONT_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONT_]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ONT_</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONT_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONT_ID]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ONT_ID</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ID</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ID]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>ID</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>COUNT</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[COUNT]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>COUNT</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HECTARES</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[HECTARES]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>HECTARES</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GL_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[GL_]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>GL_</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GL_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[GL_ID]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>GL_ID</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA_METER</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA_METER]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>AREA_METER</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETER_</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETER_]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>PERIMETER_</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LAKE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LAKE]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>LAKE</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DETAIL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[DETAIL]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>DETAIL</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[NEF_ecoregions_ONNAD1983.shp]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FID_Plot_F</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_Plot_F]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>FID_Plot_F</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tier</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Tier]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Tier</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PlotNo</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PlotNo]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>PlotNo</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Plot</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Plot]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Plot</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Descriptio</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Descriptio]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Descriptio</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>UTM</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[UTM]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>UTM</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Zone</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Zone]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Zone</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Easting</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Easting]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Easting</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Northing</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Northing]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Northing</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Descript_1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Descript_1]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Descript_1</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lat]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>lat</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lon</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[lon]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>lon</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>elevation</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[elevation]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>elevation</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FID_ecoreg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_ecoreg (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>FID_ecoreg</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FID_ecor_1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_ecor_1]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>FID_ecor_1</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>AREA</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETER</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>PERIMETER</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[REGION_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>REGION_</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[REGION_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>REGION_ID</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ECOREGION</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ECOREGION (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ECOREGION</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_NAM</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION_NAM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>REGION_NAM</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION_NOM</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION_NOM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>REGION_NOM</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ECOZONE</remote-name>
+            <remote-type>3</remote-type>
+            <local-name>[ECOZONE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ECOZONE</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FID_Ontari</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[FID_Ontari (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>FID_Ontari</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA_1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>AREA_1</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETE_1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETE_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>PERIMETE_1</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONTGL_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONTGL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ONTGL_</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONTGL_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONTGL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ONTGL_ID</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONT_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONT_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ONT_</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ONT_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ONT_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ONT_ID</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ID</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>ID</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>COUNT</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[COUNT (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>COUNT</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HECTARES</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[HECTARES (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>HECTARES</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GL_</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[GL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>GL_</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GL_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[GL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>GL_ID</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AREA_METER</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[AREA_METER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>AREA_METER</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PERIMETER_</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[PERIMETER_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>PERIMETER_</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LAKE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LAKE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>LAKE</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DETAIL</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[DETAIL (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>DETAIL</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]</local-name>
+            <parent-name>[OFBN Plots NAD 1983_NEF_Ecoregions.shp]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Grid_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Grid_code]</local-name>
+            <parent-name>[OFBN_Grid.shp]</parent-name>
+            <remote-alias>Grid_code</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Plot</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Plot (OFBN_Grid.shp)]</local-name>
+            <parent-name>[OFBN_Grid.shp]</parent-name>
+            <remote-alias>Plot</remote-alias>
+            <ordinal>68</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry (OFBN_Grid.shp)]</local-name>
+            <parent-name>[OFBN_Grid.shp]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>69</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Plot</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Plot (DI Plot-Year Averages)]</local-name>
+            <parent-name>[DI Plot-Year Averages]</parent-name>
+            <remote-alias>Plot</remote-alias>
+            <ordinal>70</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year (DI Plot-Year Averages)]</local-name>
+            <parent-name>[DI Plot-Year Averages]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>71</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Mean DI</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Mean DI]</local-name>
+            <parent-name>[DI Plot-Year Averages]</parent-name>
+            <remote-alias>Mean DI</remote-alias>
+            <ordinal>72</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>NEFEcoregion</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[NEFEcoregion]</local-name>
+            <parent-name>[DI Plot-Year Averages]</parent-name>
+            <remote-alias>NEFEcoregion</remote-alias>
+            <ordinal>73</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RCA_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[DI Plot-Year Averages]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D2215:no:A1:D2215:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='AREA (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[AREA (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Area' datatype='real' name='[AREA]' role='measure' type='quantitative' />
+      <column caption='AREA 1 (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[AREA_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Area 1' datatype='real' name='[AREA_1]' role='measure' type='quantitative' />
+      <column caption='AREA METER (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[AREA_METER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Area Meter' datatype='real' name='[AREA_METER]' role='measure' type='quantitative' />
+      <column caption='COUNT (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[COUNT (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Count' datatype='real' name='[COUNT]' role='measure' type='quantitative' />
+      <column caption='Mean DI (second)' datatype='real' name='[Calculation_932245154497142792]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Mean DI]' />
+      </column>
+      <column caption='DETAIL (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='string' name='[DETAIL (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='nominal' />
+      <column caption='Detail' datatype='string' name='[DETAIL]' role='dimension' type='nominal' />
+      <column caption='Descript 1' datatype='string' name='[Descript_1]' role='dimension' type='nominal' />
+      <column caption='ECOREGION (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ECOREGION (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Ecoregion' datatype='integer' name='[ECOREGION]' role='measure' type='quantitative' />
+      <column caption='ECOZONE (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ECOZONE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Ecozone' datatype='integer' name='[ECOZONE]' role='measure' type='quantitative' />
+      <column caption='FID Ontari (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[FID_Ontari (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='FID Ontari' datatype='integer' name='[FID_Ontari]' role='measure' type='quantitative' />
+      <column caption='FID Plot F' datatype='integer' name='[FID_Plot_F]' role='measure' type='quantitative' />
+      <column caption='FID ecor 1' datatype='integer' name='[FID_ecor_1]' role='measure' type='quantitative' />
+      <column caption='FID ecoreg (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[FID_ecoreg (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='FID ecoreg' datatype='integer' name='[FID_ecoreg]' role='measure' type='quantitative' />
+      <column caption='GL  (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[GL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='GL ID (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[GL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='ordinal' />
+      <column caption='Gl Id' datatype='integer' name='[GL_ID]' role='dimension' type='ordinal' />
+      <column caption='GL' datatype='integer' name='[GL_]' role='measure' type='quantitative' />
+      <column caption='Geometry (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='spatial' name='[Geometry (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='nominal' />
+      <column caption='HECTARES (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[HECTARES (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Hectares' datatype='real' name='[HECTARES]' role='measure' type='quantitative' />
+      <column caption='ID (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='ordinal' />
+      <column datatype='real' name='[ID]' role='dimension' type='ordinal' />
+      <column caption='LAKE (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='string' name='[LAKE (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='nominal' />
+      <column caption='Lake' datatype='string' name='[LAKE]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='ONTGL  (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ONTGL_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='ONTGL ID (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ONTGL_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='ordinal' />
+      <column caption='Ontgl Id' datatype='integer' name='[ONTGL_ID]' role='dimension' type='ordinal' />
+      <column caption='Ontgl' datatype='integer' name='[ONTGL_]' role='measure' type='quantitative' />
+      <column caption='ONT  (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ONT_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='ONT ID (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[ONT_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='ordinal' />
+      <column caption='Ont Id' datatype='integer' name='[ONT_ID]' role='dimension' type='ordinal' />
+      <column caption='Ont' datatype='integer' name='[ONT_]' role='measure' type='quantitative' />
+      <column caption='PERIMETER (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[PERIMETER (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Perimeter' datatype='real' name='[PERIMETER]' role='measure' type='quantitative' />
+      <column caption='PERIMETER  (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[PERIMETER_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Perimeter1' datatype='real' name='[PERIMETER_]' role='measure' type='quantitative' />
+      <column caption='PERIMETE 1 (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='real' name='[PERIMETE_1 (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='Perimete 1' datatype='real' name='[PERIMETE_1]' role='measure' type='quantitative' />
+      <column caption='Plot No' datatype='real' name='[PlotNo]' role='measure' type='quantitative' />
+      <column caption='REGION  (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[REGION_ (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='measure' type='quantitative' />
+      <column caption='REGION ID (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='integer' name='[REGION_ID (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='ordinal' />
+      <column caption='Region Id' datatype='integer' name='[REGION_ID]' role='dimension' type='ordinal' />
+      <column caption='REGION NAM (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='string' name='[REGION_NAM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='nominal' />
+      <column caption='Region Nam' datatype='string' name='[REGION_NAM]' role='dimension' type='nominal' />
+      <column caption='REGION NOM (OFBN Plots NAD 1983 NEF Ecoregions.shp)' datatype='string' name='[REGION_NOM (OFBN Plots NAD 1983_NEF_Ecoregions.shp)]' role='dimension' type='nominal' />
+      <column caption='Region Nom' datatype='string' name='[REGION_NOM]' role='dimension' type='nominal' />
+      <column caption='Region' datatype='integer' name='[REGION_]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Year (DI Plot-Year Averages)]' role='dimension' type='quantitative' />
+      <column datatype='real' name='[Year]' role='dimension' type='quantitative' />
+      <column caption='Elevation' datatype='real' name='[elevation]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='Lat' datatype='real' name='[lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='Lon' datatype='real' name='[lon]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.605653' measure-ordering='alphabetic' measure-percentage='0.394347' show-structure='true' user-set-layout='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='en_climate_summaries_ON_1985-2018 no NA sorted' inline='true' name='federated.0ucfill0qh2pss1cc0arh1m8906z' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='en_climate_summaries_ON_1985-2018 no NA sorted' name='textscan.141g351050e44v1d8uz7n118exsb'>
+            <connection class='textscan' directory='C:/Users/WangJon/OneDrive - Government of Ontario/Desktop/Tableau Help' filename='en_climate_summaries_ON_1985-2018 no NA sorted.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.141g351050e44v1d8uz7n118exsb' name='en_climate_summaries_ON_1985-2018 no NA sorted.csv' table='[en_climate_summaries_ON_1985-2018 no NA sorted#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+            <column datatype='date' name='Year-Month' ordinal='0' />
+            <column datatype='integer' name='Year' ordinal='1' />
+            <column datatype='integer' name='Month' ordinal='2' />
+            <column datatype='real' name='Long' ordinal='3' />
+            <column datatype='real' name='Lat' ordinal='4' />
+            <column datatype='string' name='Stn_Name' ordinal='5' />
+            <column datatype='integer' name='Clim_ID' ordinal='6' />
+            <column datatype='string' name='Prov' ordinal='7' />
+            <column datatype='real' name='MeanTemp C ' ordinal='8' />
+            <column datatype='integer' name='DwTm' ordinal='9' />
+            <column datatype='real' name='Mean Temp C Diff than Normal' ordinal='10' />
+            <column datatype='real' name='Max Temp C' ordinal='11' />
+            <column datatype='integer' name='DwTx' ordinal='12' />
+            <column datatype='real' name='Min Temp C' ordinal='13' />
+            <column datatype='integer' name='DwTn' ordinal='14' />
+            <column datatype='real' name='Snowfall cm' ordinal='15' />
+            <column datatype='integer' name='DwS' ordinal='16' />
+            <column datatype='integer' name='Snowfall cm Diff than Normal' ordinal='17' />
+            <column datatype='real' name='Total Precipitation mm' ordinal='18' />
+            <column datatype='integer' name='DwP' ordinal='19' />
+            <column datatype='integer' name='Total Precipitation mm Diff than Normal' ordinal='20' />
+            <column datatype='integer' name='Snow on Ground Month End' ordinal='21' />
+            <column datatype='integer' name='Number of Days more than 1 mm Precipitation' ordinal='22' />
+            <column datatype='real' name='BS' ordinal='23' />
+            <column datatype='real' name='DwBS' ordinal='24' />
+            <column datatype='integer' name='BS%' ordinal='25' />
+            <column datatype='real' name='HDD' ordinal='26' />
+            <column datatype='real' name='CDD' ordinal='27' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_CA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year-Month</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Year-Month]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Year-Month</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Month]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Month</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Long</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Long]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Long</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Lat]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Lat</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Stn_Name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Stn_Name]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Stn_Name</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Clim_ID</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Clim_ID]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Clim_ID</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Prov</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Prov]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Prov</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MeanTemp C </remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[MeanTemp C ]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>MeanTemp C </remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwTm</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DwTm]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwTm</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Mean Temp C Diff than Normal</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Mean Temp C Diff than Normal]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Mean Temp C Diff than Normal</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Max Temp C</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Max Temp C]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Max Temp C</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwTx</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DwTx]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwTx</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Min Temp C</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Min Temp C]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Min Temp C</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwTn</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DwTn]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwTn</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Snowfall cm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Snowfall cm]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Snowfall cm</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwS</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DwS]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwS</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Snowfall cm Diff than Normal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Snowfall cm Diff than Normal]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Snowfall cm Diff than Normal</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Precipitation mm</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Total Precipitation mm]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Total Precipitation mm</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwP</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[DwP]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwP</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Total Precipitation mm Diff than Normal</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Total Precipitation mm Diff than Normal]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Total Precipitation mm Diff than Normal</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Snow on Ground Month End</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Snow on Ground Month End]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Snow on Ground Month End</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Number of Days more than 1 mm Precipitation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Number of Days more than 1 mm Precipitation]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>Number of Days more than 1 mm Precipitation</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>BS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[BS]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>BS</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DwBS</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[DwBS]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>DwBS</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>BS%</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[BS%]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>BS%</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>HDD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[HDD]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>HDD</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CDD</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[CDD]</local-name>
+            <parent-name>[en_climate_summaries_ON_1985-2018 no NA sorted.csv]</parent-name>
+            <remote-alias>CDD</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <column datatype='integer' name='[Clim_ID]' role='dimension' type='ordinal' />
+      <column aggregation='Avg' datatype='real' name='[Lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[Long]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column datatype='integer' name='[Month]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='integer' name='[Year]' role='dimension' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.259758' measure-ordering='alphabetic' measure-percentage='0.740242' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Climate Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='en_climate_summaries_ON_1985-2018 no NA sorted' name='federated.0ucfill0qh2pss1cc0arh1m8906z' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0ucfill0qh2pss1cc0arh1m8906z'>
+            <column datatype='integer' name='[Clim_ID]' role='dimension' type='ordinal' />
+            <column aggregation='Avg' datatype='real' name='[Lat]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[Long]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column datatype='real' name='[MeanTemp C ]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Year-Month]' role='dimension' type='ordinal' />
+            <column-instance column='[Lat]' derivation='Avg' name='[avg:Lat:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Long]' derivation='Avg' name='[avg:Long:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[MeanTemp C ]' derivation='Avg' name='[avg:MeanTemp C :qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Clim_ID]' derivation='None' name='[none:Clim_ID:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Year-Month]' derivation='Month-Trunc' name='[tmn:Year-Month:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:MeanTemp C :qk]' palette='orange_blue_diverging_10_0' reverse='true' type='interpolated' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='dark' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='tableau-map-blue-green-light' />
+            <format attr='geo-area-type' value='State' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:MeanTemp C :qk]' />
+              <lod column='[federated.0ucfill0qh2pss1cc0arh1m8906z].[none:Clim_ID:ok]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.77961325645446777' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:Lat:qk]</rows>
+        <cols>[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:Long:qk]</cols>
+        <pages>
+          <column>[federated.0ucfill0qh2pss1cc0arh1m8906z].[tmn:Year-Month:ok]</column>
+        </pages>
+      </table>
+      <simple-id uuid='{D0901169-0370-4964-BEFF-7E5711EA4F05}' />
+    </worksheet>
+    <worksheet name='Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='NEF_ecoregions_ONNAD1983' name='federated.1ygvcap1qerptb1a83nok17iykel' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1ygvcap1qerptb1a83nok17iykel'>
+            <column caption='Mean DI (second)' datatype='real' name='[Calculation_932245154497142792]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Mean DI]' />
+            </column>
+            <column datatype='spatial' name='[Geometry (OFBN_Grid.shp)]' role='measure' type='nominal' />
+            <column datatype='spatial' name='[Geometry]' role='measure' type='nominal' />
+            <column datatype='real' name='[Mean DI]' role='measure' type='quantitative' />
+            <column datatype='string' name='[NEFEcoregion]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Plot (OFBN_Grid.shp)]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Year (DI Plot-Year Averages)]' role='dimension' type='quantitative' />
+            <column-instance column='[Calculation_932245154497142792]' derivation='Avg' name='[avg:Calculation_932245154497142792:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Mean DI]' derivation='Avg' name='[avg:Mean DI:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Geometry (OFBN_Grid.shp)]' derivation='Collect' name='[clct:Geometry (OFBN_Grid.shp):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Geometry]' derivation='Collect' name='[clct:Geometry:nk]' pivot='key' type='nominal' />
+            <column-instance column='[NEFEcoregion]' derivation='None' name='[none:NEFEcoregion:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Plot (OFBN_Grid.shp)]' derivation='None' name='[none:Plot (OFBN_Grid.shp):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year (DI Plot-Year Averages)]' derivation='None' name='[none:Year (DI Plot-Year Averages):ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='1' field='[federated.1ygvcap1qerptb1a83nok17iykel].[Latitude (generated)]' field-type='quantitative' fold='true' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Mean DI:qk]' palette='tableau-map-temperatur' type='interpolated' />
+            <encoding attr='color' field='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Calculation_932245154497142792:qk]' max='17.0' palette='red_blue_white_diverging_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ygvcap1qerptb1a83nok17iykel].[Latitude (generated)]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Mean DI:qk]' />
+              <lod column='[federated.1ygvcap1qerptb1a83nok17iykel].[clct:Geometry:nk]' />
+              <lod column='[federated.1ygvcap1qerptb1a83nok17iykel].[none:NEFEcoregion:nk]' />
+              <geometry column='[federated.1ygvcap1qerptb1a83nok17iykel].[clct:Geometry:nk]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1ygvcap1qerptb1a83nok17iykel].[Latitude (generated)]' y-index='1'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Calculation_932245154497142792:qk]' />
+              <lod column='[federated.1ygvcap1qerptb1a83nok17iykel].[clct:Geometry (OFBN_Grid.shp):nk]' />
+              <lod column='[federated.1ygvcap1qerptb1a83nok17iykel].[none:Plot (OFBN_Grid.shp):qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.1ygvcap1qerptb1a83nok17iykel].[Latitude (generated)] + [federated.1ygvcap1qerptb1a83nok17iykel].[Latitude (generated)])</rows>
+        <cols>[federated.1ygvcap1qerptb1a83nok17iykel].[Longitude (generated)]</cols>
+        <pages>
+          <column>[federated.1ygvcap1qerptb1a83nok17iykel].[none:Year (DI Plot-Year Averages):ok]</column>
+        </pages>
+      </table>
+      <simple-id uuid='{D38EB36F-2143-407B-A1D6-4E2A6B00C6C1}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='51'>
+    <window class='worksheet' maximized='true' name='Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card type='currpage' />
+            <card pane-specification-id='1' param='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Mean DI:qk]' type='color' />
+            <card pane-specification-id='2' param='[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Calculation_932245154497142792:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <current-page>
+          <multibucket>
+            <bucket>1986</bucket>
+          </multibucket>
+        </current-page>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Calculation_932245154497142792:qk]</field>
+            <field>[federated.1ygvcap1qerptb1a83nok17iykel].[avg:Mean DI:qk]</field>
+            <field>[federated.1ygvcap1qerptb1a83nok17iykel].[none:NEFEcoregion:nk]</field>
+            <field>[federated.1ygvcap1qerptb1a83nok17iykel].[none:Year (DI Plot-Year Averages):qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{FCBE91C1-7F2B-49A3-A6B6-C6728617DA07}' />
+    </window>
+    <window class='worksheet' name='Climate Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card type='currpage' />
+            <card pane-specification-id='0' param='[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:MeanTemp C :qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <current-page>
+          <multibucket>
+            <bucket>#1985-01-01 00:00:00#</bucket>
+          </multibucket>
+        </current-page>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ucfill0qh2pss1cc0arh1m8906z].[avg:MeanTemp C :qk]</field>
+            <field>[federated.0ucfill0qh2pss1cc0arh1m8906z].[none:Clim_ID:ok]</field>
+            <field>[federated.0ucfill0qh2pss1cc0arh1m8906z].[yr:Year-Month:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{1DBE530F-4B95-48D3-843E-5991BDFCD7A8}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Climate Map' width='192'>
+      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
+      AABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Map' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
