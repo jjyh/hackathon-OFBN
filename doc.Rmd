@@ -1,0 +1,215 @@
+---
+title: 'Climate Change: Too hot for our forests to handle?'
+author: 'MECP hackathon team 3: M.Williamson, M.Khaddaj, D. Nguyen, J.Ho '
+date: "October 2020"
+output: 
+  html_document:
+    keep_md: true
+    df_print: paged
+bibliography: citation.bib
+---
+# Background: Climate Change and Forests
+Climate change is occurring - palpably and audibly so in its many manifestations.  But the trees are silent.  If one falls, is no one around to hear it?
+
+The Ontario Ministry of Environment, Conservation and Parks (MECP)'s Terrestrial Assessment and Field Services Unit has been listening. The MECP has kept careful watch of our forests in the Ontario Forest Biomonitoring Network (OFBN), comprising of 111 mature stand plots over 30 years since 1986. [@OFBNppt] The OFBN has developed the Decline Index (DI) as a cumulative representation of observed tree stresses.
+
+To understand future changes we need to know what has happened before. Future projections are long-term but our climate has already been changing. Understanding how much change has happened in recent years can help in creating models to predict the effects of climate change on forest ecosystems.  An exploratory dashboard for this purpose has been created for the MECP hackathon 2020, accessible at this location: http://15.223.127.188/#/site/EnvironmentalDataHackathon/projects/74
+
+This documentation explains in detail the data sources, approach rationale, data processing and references used in the dashboard.  
+
+# Objective
+Much research has demonstrated that climate conditions over the long-term and annual differences affect forest health. Temperature and moisture are the most important climate factors influencing forest health. Extreme events will have substantial impact on forest health because of: 
+1.Increases in Intensity, Duration and Frequency  
+2.Irregular Timing  
+3.Less Periodicity (more variable and less predictable)  
+
+The dashboard seeks to provide visual insights on:  
+1.How have climate conditions changed over in the OFBN sites?  
+2.Do climate conditions differ among the OFBN sites?  
+3.Do climate condition changes over the years differ among the OFBN sites?   
+4.Are the annual plot Decline Index (DI) means influenced by the climate conditions found in the plot?  
+
+# Scope - Spatial, Temporal and Climate Factors
+Due to resource limitation, the data analysis and dashboard are constrained and may be considered a proof-of-concept or pilot for further expansion.  The current iteration is constrained to:  
+1. Study Time Period of 1986-2018, for which DI data have been made available for public use   
+2. Fourteen OFBN plots, as a sample selection across the province  
+3. Usage of Environment Canada (ECCC) climate stations  
+  
+To simplify the influence of climate on the forest DI, we focus on the following climate metrics that have been shown to influence hardwood forest canopy health in Vermont [@OSarticle]:    
+1.April minimum temperatures  
+2.Preceding August minimum temperature  
+3.Preceding October minimum temperature  
+
+# Data Sources
+All data used are from open data sources available to the public.  The subsequent retrieval section will detail the processes developed to make the data more reproducibly and consistently retrievable, for potential application to expanded time periods and location sets in the future.
+
+## Global & Ontario Climate, Introductory 
+Temperature records from NOAA, NASA and University of East Anglia as compiled by NOAA [@NOAA] were used to provide overall summary of global temperature change in the dashboard introductory header.  Ontario climate trends were based on analysis of York University's Ontario Climate Data Portal, accessible at  http://lamps.math.yorku.ca/OntarioClimate/index_v18.htm [@zhu_ontario_2020]  
+
+## OFBN forest monitoring stations
+The Ontario Open Data Portal contains the OFBN Decline Index data [@OFBNdata]: 
+https://geohub.lio.gov.on.ca/datasets/3649ef49222e4f6890b38c1a867da887
+Of the 111 OFBN plots, fourteen plots were further short-listed for climate data exploration.  These fourteen plots are where MECP has been monitoring forest understory climate and precipitation in nearby open area (this meteorological data is expected to be open source in the future), being:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(lubridate)
+library(tidyverse)
+library(dplyr)
+library(plotly)
+library(flexdashboard)
+library(readxl)
+library(knitr)
+library(DT)
+library(janitor)
+library(stringdist)
+
+dt_OFBNECCC<-read_xlsx("data/ECCC-OFBN Site Possibilities.xlsx", sheet="OFBN-ECCC Short List")
+dt_OFBNECCC <- dt_OFBNECCC %>%  remove_empty("rows")
+dt_OFBN<-dt_OFBNECCC %>% 
+  select(1,7,8) %>% 
+  distinct()
+DT::datatable(dt_OFBN)
+
+```
+
+The Decline Index is a weighted measure of four stress parameters for every mature hardwood stem (> 10 cm of Diameter at Breast Height) inside the plot or initial 100 trees outside the plot.  The Decline Index is calculated to the nearest whole number and ranges from zero (0) for a tree stem with no symptoms to one hundred (100) for a stem with maximum decline that does not have any live foliage.  The Decline Index is divided into five classes of decline incidence to indicate the severity of decline for plot averages [@MOE]:  
+
+Very Low (< 11), 
+Low (11-15), 
+Moderate (16-20), 
+High (21 - 25) and 
+Severe (> 25).  
+
+These decline incidence classes were determined by forest experts to provide a measure of tree or forest stand health.  
+
+The calculation formula is as follows:  
+DI = CD + (A \* UL) + (A \* ST) + (A \* SL/2)  
+
+Where  
+DI = Decline Index  
+CD = % Crown Dieback (percent cover of branches with no live foliage in crown)  
+A = ([100-CD]/400  
+UL = % Undersized leaves of remnant live foliage  
+ST = % leaves with strong chlorosis i.e., dark yellow throughout leaves of remnant live foliage  
+SL = % leaves with slight chlorosis of light yellow-pale green throughout leaves or leaf edges of remnant live foliage  
+
+## ECCC Climate stations
+ECCC's climate station data is publicly available at [@ECdata]: https://climate.weather.gc.ca/index_e.html
+
+The following criteria were used to select suitable ECCC climate stations:  
+1. Station contains records within Study Time Period 
+2. Stations must have Climate Normals data available to calculate climate anomalies. Normals are from ECCC or the Canadian Forest Service Ecoclimatic regional metrics.   
+3.Stations should have similar elevation, topography and land cover to the OFBN plot. Elevation point locations were used to compare. Topography and land cover were compared using satellite imagery. None of the ECCC stations will be truly representative of local forest (influenced by soil moisture, terrain, etc.) but will provide uniform conditions and regional representation at a synoptic scale.  
+4. With the above conditions met, the closest suitable station(s) were selected. More than one station can provide insight into the variation among stations at different distances. Climate metrics vary in how much they are sensitive to distance differences (e.g.anomalies robust over large distances vs. precipitation being localized).  
+
+```{r,echo=FALSE}
+#dt_OFBNECCC<-read_xlsx("data/ECCC-OFBN Site Possibilities.xlsx", sheet="OFBN-ECCC Short List") #Sept. 25th version from MW
+#dt_OFBNECCC <- dt_OFBNECCC %>%  remove_empty("rows")
+dt_ECCC<-dt_OFBNECCC %>% 
+  select(12,11,10,13,14,17:19,26)
+DT::datatable(dt_ECCC)
+write.csv(dt_OFBNECCC, 'dt_OFBNECCC.csv')
+```
+
+
+The location of the ECCC plots relative to the fourteen short-listed OFBN plots are:  
+```{r, include=TRUE, echo=FALSE,warning=FALSE, messae=FALSE}
+### OFBN plots vs ECCC
+library(rgdal)
+library(leaflet)
+library(rgeos)
+
+OFBNplots <- readOGR('data/OFBN1/shapefile/OFBN_Grid.shp',verbose = FALSE)
+
+OFBNplots<- spTransform(OFBNplots,CRS("+proj=longlat +datum=WGS84 +no_defs"))
+# This CRS corresponds to EPSG:4326. Leaflet  takes care of transforming from EPSG:4326 to EPSG:3857 ("Google Mercator").
+
+ECCCstns<-read.csv('data/Climate Monthly Summaries partial 1986 2016 2017.csv')
+
+#add a buffer around the point
+pointsBufferD <- gBuffer(OFBNplots, width=0.1, byid = TRUE)#100km
+#pointsBuffer = pointsBufferD %>%
+#  spTransform(CRS("+init=epsg:4269"))#but leaflet needs longlat
+
+m<-leaflet() %>% 
+  addProviderTiles('Stamen.TonerLite', group="Map") %>% 
+  addPolygons(data= OFBNplots,
+              color = "blue",
+              label = ~paste0("Plot ", OFBNplots$Plot)) %>% 
+  addCircleMarkers(data= ECCCstns,
+                    lng=~Long, lat=~Lat,
+                    radius = 1, # size of the dots
+                    fillOpacity = .4, # alpha of the dots
+                    stroke = FALSE, # no outline
+                    popup = ~ECCCstns$'Stn_Name',
+                    group="ECCC",
+                    color = 'orange') %>%
+  #addPolygons(data=pointsBuffer)%>%
+  addLayersControl(
+      baseGroups = c("Map"),
+      overlayGroups = c("blue = OFBN plots", "orange = ECCC stations"),#"100km Buffer zone for candidate climate stations"),
+      options = layersControlOptions(collapsed = F))
+#TBD - add hard labels https://stackoverflow.com/questions/48147282/how-to-add-labels-on-top-of-polygons-in-leaflet
+m
+#nocite: '@*'
+```
+
+
+## National Ecological Framework Ecoregions
+An ecoregion is characterized by ecological factors distinctive to the region, including climate, physiography, vegetation, soil, water, and fauna.  The National Ecological Framework (NEF) Ecoregions classification and extent data are publicly available at [@ERdata]:
+https://open.canada.ca/data/en/dataset/ade80d26-61f5-439e-8966-73b352811fe6 
+
+By viewing the OFBN Decline Index within this spatial context, Eco-regional associations with decline pattern may become discernable.
+
+# Data Retrieval and Processing
+## OFBN & NEF Processing
+The OFBN decline index and plot locations were used without any pre-processing.  
+The NEF Ecoregion map shapefile contained multiple polygons (e.g. detailed sub-district breakdown) within each Ecoregion.  Through GIS software,these were dissolved into one polygon per Ecoregion to prevent data densification issues when overlain with OFBN plots to join in DI data.  Ecoregions without any OFBN plots were removed from processing.   
+Ecoregions were manually identified as Canadian Shield regions (or not) using a calculated field by text-case within Tableau.    
+
+## ECCC Retrieval
+Data records were combined as needed from multiple stations from the same location or within close proximity, with similar elevations and land cover. Note: Different stations could be the same station with changes in station caretaker, instrumentation and slight relocations.  
+
+ECCC provides Linux-based instruction for bulk download at the following location: https://drive.google.com/drive/folders/1WJCDEU34c60IfOnG4rv5EPZ4IhhW9vZH
+To facilitate working with Tableau and Windows-based system, the team has compiled an alternate retrieval script that can be run in Windows command prompt (PowerShell) instead:  
+To run a PowerShell command:  
+1.	Click Start on your Desktop, type PowerShell, and then click Windows PowerShell.  
+2.	Copy/paste the script to the text editor  
+3.	Hit Enter  
+ 
+The script pulls all the station data into one text file. The only limitation is that the output file contains http response headers, that need to be manually deleted. 
+The variables followed by #comments can be changed:
+ 
+```{bash,eval=FALSE}
+$stations = 52318, 54604, 4201 , 50839 #add or remove station id separated by “,”
+Foreach ($station in $stations)
+{
+      For ($year =1990; $year -lt 2021; $year++) #change start and end years of the required data range
+      {
+            for ($month =1; $month -lt 2; $month++) 
+            { 
+            $R = Invoke-WebRequest "https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID=$station&Year=$year&Month=$month&Day=14&timeframe=2&submit= Download+Data";
+            $R.RawContent | Out-File C:\Users\Documents\R\HackathonMECP\data\north_bay.txt -Append #file path and file name can be changed.
+           }
+      }
+}
+```
+
+The order of year-month-day and the data general quality was checked prior to import into Tableau
+
+## ECCC Processing 
+
+From the ECCC climate dataset, the following parameters were chose to explore the effect of changing climate on the forest plots:   
+- Extreme minimum daily temperature, termed within the dataset as "Extr Min Daily Temp C"  
+- Extreme maximum daily temperature, termed within the dataset as "Extr Max Daily Temp C"  
+- Total precipitation, termed within the dataset as "Total Precip mm"  
+To facilitate processing, the originally wide-format data were pivotted into long format with only the selected parameters.  
+These values were further aggregated into averages relative to the ECCC station's related OFBN plot e.g. the average of the  April daily minima of several stations in proximity of an OFBN plot.  
+
+April minimum, prior year's August mininum and prior year's Oct mininmum temperatures were factors noted by Oswald et al. (2018) to most influence forest health in their Vermont U.S. study.  These values were parsed within Tableau using filters by month.
+
+
+# References
+
+
