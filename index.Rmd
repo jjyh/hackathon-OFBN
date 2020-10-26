@@ -9,6 +9,10 @@ output:
 bibliography: citation.bib
 always_allow_html: yes
 ---
+  
+Shortcut to Data Sources and References: [References]  
+
+
 # Background: Climate Change and Forests
 Climate change is occurring - palpably and audibly so in its many manifestations.  But the trees are silent.  If one falls, is no one around to hear it?
 
