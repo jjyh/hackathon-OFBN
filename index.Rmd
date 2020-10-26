@@ -54,9 +54,9 @@ Temperature records from NOAA, NASA and University of East Anglia as compiled by
 ## OFBN forest monitoring stations
 The Ontario Open Data Portal contains the OFBN Decline Index data [@OFBNdata]: 
 https://geohub.lio.gov.on.ca/datasets/3649ef49222e4f6890b38c1a867da887
-Of the 111 OFBN plots, fourteen plots were further short-listed for climate data exploration.  These fourteen plots are where MECP has been monitoring forest understory climate and precipitation in nearby open area (this meteorological data is expected to be open source in the future), being:
+Of the 111 OFBN plots, plots were further short-listed for climate data exploration.  
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(lubridate)
 library(tidyverse)
@@ -119,7 +119,7 @@ write.csv(dt_OFBNECCC, 'dt_OFBNECCC.csv')
 
 
 
-```{r, include=FALSE, echo=FALSE,warning=FALSE, message=FALSE}
+```{r, include=TRUE, echo=FALSE,warning=FALSE, message=FALSE}
 #The location of the ECCC plots relative to the fourteen short-listed OFBN plots are:  
 ### OFBN plots vs ECCC
 library(rgdal)
