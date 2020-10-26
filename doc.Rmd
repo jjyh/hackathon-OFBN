@@ -1,12 +1,15 @@
 ---
-title: "Climate Change: Too hot for our forests to handle?"
-author: "MECP hackathon team 3: M.Williamson, M.Khaddaj, D. Nguyen, J.Ho "
+title: 'Climate Change: Too hot for our forests to handle?'
+author: 'MECP hackathon team 3: M.Williamson, M.Khaddaj, D. Nguyen, J.Ho '
 date: "October 2020"
-output: html_document
-bibliography: citation.bib  
+output: 
+  html_document:
+    keep_md: true
+    df_print: paged
+bibliography: citation.bib
 ---
 # Background: Climate Change and Forests
-Climate change is occurring - palpably and audibly so in its many manifestations.  But the trees are silent - if one falls, is no one around to hear it?
+Climate change is occurring - palpably and audibly so in its many manifestations.  But the trees are silent.  If one falls, is no one around to hear it?
 
 The Ontario Ministry of Environment, Conservation and Parks (MECP)'s Terrestrial Assessment and Field Services Unit has been listening. The MECP has kept careful watch of our forests in the Ontario Forest Biomonitoring Network (OFBN), comprising of 111 mature stand plots over 30 years since 1986. [@OFBNppt] The OFBN has developed the Decline Index (DI) as a cumulative representation of observed tree stresses.
 
@@ -40,8 +43,8 @@ To simplify the influence of climate on the forest DI, we focus on the following
 # Data Sources
 All data used are from open data sources available to the public.  The subsequent retrieval section will detail the processes developed to make the data more reproducibly and consistently retrievable, for potential application to expanded time periods and location sets in the future.
 
-## Global Temperature 
-Temperature records from NOAA, NASA and University of East Anglia as compiled by NOAA [@NOAA] were used to provide overall summary of global temperature change in the dashboard introductory header.   
+## Global & Ontario Climate, Introductory 
+Temperature records from NOAA, NASA and University of East Anglia as compiled by NOAA [@NOAA] were used to provide overall summary of global temperature change in the dashboard introductory header.  Ontario climate trends were based on analysis of York University's Ontario Climate Data Portal, accessible at  http://lamps.math.yorku.ca/OntarioClimate/index_v18.htm [@zhu_ontario_2020]  
 
 ## OFBN forest monitoring stations
 The Ontario Open Data Portal contains the OFBN Decline Index data [@OFBNdata]: 
