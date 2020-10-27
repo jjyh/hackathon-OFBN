@@ -10,13 +10,13 @@ bibliography: citation.bib
 always_allow_html: yes
 ---
   
-Shortcut to [References] (including data sources)
+_Shortcut to [References] (including data sources)_
 
 
 # Background: Climate Change and Forests
 Climate change is occurring - palpably and audibly so in its many manifestations.  But the trees are silent.  If one falls, is no one around to hear it?
 
-The Ontario Ministry of Environment, Conservation and Parks (MECP)'s Terrestrial Assessment and Field Services Unit has been listening. The MECP has kept careful watch of our forests in the Ontario Forest Biomonitoring Network (OFBN), comprising of 111 mature hardwood stand plots since 1986. [@OFBNppt] The OFBN has developed the Decline Index (DI) as a cumulative indicator of multiple tree stresses.
+The Ontario Ministry of Environment, Conservation and Parks (MECP)'s Terrestrial Assessment and Field Services Unit has been listening. The MECP has kept careful watch of our forests in the Ontario Forest Biomonitoring Network (OFBN), comprising of 111 mature hardwood stand plots since 1986. The OFBN has developed the Decline Index (DI) as a cumulative indicator of multiple tree stresses.[@OFBNdata]  
 
 To understand future changes, we need to know what has happened before. Future projections are long-term but our climate has already been changing. Understanding how much change has happened in recent years can help in creating models to predict the effects of climate change on forest ecosystems. An exploratory dashboard for this purpose has been created for the MECP hackathon 2020, accessible at this location:   http://15.223.127.188/#/site/EnvironmentalDataHackathon/projects/74
 
@@ -205,49 +205,22 @@ Foreach ($station in $stations)
 A Visual Basic macro was developed and used in Microsoft Excel to consolidate the numerous monthly summary files each of which included all stations with available data across Ontario but only for one month within a year and did not include the date, year or month within each file.  
 ```{VisualBasic,eval=FALSE}
 Sub findmatch()
-
- 
-
-    
-
     Dim ws As Worksheet
-
     Dim i As Long, j As Long
-
-    
-
-    
-
     Set ws = Worksheets("climate monthly archives-summar")
-
-    
-
     Debug.Print ws.Cells(16, 16).Interior.Color
-
     For i = 2 To 33
-
       If Right(ws.Cells(1, i), 2) = "-1" Then   'second column of pair
-
         For j = 2 To 105413
-
             If ws.Cells(j, i) <> "" And ws.Cells(j, i - 1) <> "" Then 'only check if both hava a value
-
                 If ws.Cells(j, i).Value <> ws.Cells(j, i - 1).Value Then
-
                     ws.Cells(j, i).Interior.ColorIndex = 6
-
                 Else
-
                     ws.Cells(j, i).Interior.Color = 15652797
-
                 End If
-
             End If
-
         Next j
-
       End If
-
     Next i
 End Sub
 ```
@@ -258,69 +231,36 @@ However, the ECCC’s website said the monthly climate summary data “has under
 
 ```{VisualBasic, eval=FALSE}
 Sub findmatch()
-
- 
-
-    
-
     Dim ws As Worksheet
-
     Dim i As Long, j As Long
-
-    
-
-    
-
     Set ws = Worksheets("climate monthly archives-summar")
-
-    
-
     Debug.Print ws.Cells(16, 16).Interior.Color
-
     For i = 2 To 33
-
       If Right(ws.Cells(1, i), 2) = "-1" Then   'second column of pair
-
         For j = 2 To 102007
-
             If ws.Cells(j, i) <> "" And ws.Cells(j, i - 1) <> "" Then 'only check if both hava a value
-
                 If ws.Cells(j, i).Value <> ws.Cells(j, i - 1).Value Then
-
                     ws.Cells(j, i).Interior.ColorIndex = 6
-
                 Else
-
                     ws.Cells(j, i).Interior.Color = 15652797
-
                 End If
-
             End If
-
         Next j
-
       End If
-
     Next i
-
- 
-
 End Sub
-
 ```
 
-For question 3, the drop-down filters in the Ontario map were created by pivoting the ECCC climate data for all stations across the province. To reduce the file size and processing time required in Tableau, only temperature and precipitation parameters were included in the data file because of their relevance to trees and functionality to the climate-forest dashboard. The drop-down parameters included total precipitation and temperature (average =mean, and extreme minimum or maximum daily temperature in the month = Extr Min or Max Daily Temp C”. For question 4, the extreme minimum daily temperatures were used rather than the averaged daily minimums for two reasons. First, the extreme conditions are more likely to trigger stress events for trees e.g., a hard frost of < -100 C kills chlorophyll that reflects green light in leaves quickly stopping energy production by photosynthesis. [@sciam]   
+For question 3, the drop-down filters in the Ontario map were created by pivoting the ECCC climate data for all stations across the province. To reduce the file size and processing time required in Tableau, only temperature and precipitation parameters were included in the data file because of their relevance to trees and functionality to the climate-forest dashboard. The drop-down parameters included total precipitation and temperature (average = mean, and extreme minimum or maximum daily temperature in the month = Extr Min or Max Daily Temp C”. For question 4, the extreme minimum daily temperatures were used rather than the averaged daily minimums for two reasons. First, the extreme conditions are more likely to trigger stress events for trees e.g., a hard frost of < -100 C kills chlorophyll that reflects green light in leaves quickly stopping energy production by photosynthesis. [@sciam]   
   
 Schaberg et al. (2003) found that the degree of emergent red pigmentation in sugar maple trees indicates whether the tree had adequate foliar nitrogen, starch and sugar reserves to be healthy or not. The second reason is that more data were available for extreme minimum daily temperatures as the data archives was the only source for minimum daily temperatures averaged for the month. The drop-down filters also included the climate anomalies/difference from normal drop-downs for each of the temperature and precipitation parameters. These climate anomalies were used to enable the public to see whether what was experienced in one year is the same as what was found to be the average condition between 1980-2010 for that site. The monthly summaries included differences from normals but the data archives did not. To ensure consistency and a complete record, the differences from normal were calculated using formulas within Microsoft Excel for all available temperature and precipitation measurements. 
 
 
-
-## OFBN Decline Index-ECCC climate data 
+# OFBN Decline Index-ECCC climate data 
 
 To understand the influence of climate on the forest DI (question 4), we focused on the following climate metrics that have been shown to be key out of 143 climate metrics assessed for their influence on hardwood forest canopy health in Vermont (Oswald et al. 2018). Oswald et al 2018 also identified two other key climate metrics but they were excluded because the scope of the dashboard would be unmanageable because of the data processing time to analyze daily climate data. 
 
 1. April minimum temperatures  
-  
 2. August minimum temperature in the previous year     
 3. October minimum temperature in the previous year  
   
@@ -330,7 +270,7 @@ Question 4 utilized a subset of 14 OFBN plots and representative ECCC climate st
   
 2. Stations have Climate Normals data available to calculate climate anomalies (difference between climate condition within a year to the averaged condition between 1985-2010 for a station).  
   
-3.Stations have similar elevation, topography and land cover to the OFBN plot. Elevation, topography and land cover were compared using satellite imagery. The ECCC stations were located to provide uniform conditions and regional representation at a synoptic scale. None of the ECCC stations will be truly representative of local forest conditions that are influenced by local terrain, vegetation, soil moisture and other characteristics.  
+3. Stations have similar elevation, topography and land cover to the OFBN plot. Elevation, topography and land cover were compared using satellite imagery. The ECCC stations were located to provide uniform conditions and regional representation at a synoptic scale. None of the ECCC stations will be truly representative of local forest conditions that are influenced by local terrain, vegetation, soil moisture and other characteristics.  
   
 4. Very few ECCC climate ID stations have continuous 1985-2017 records in Ontario. Data from multiple climate IDs had to be combined to provide a continuous 1985-2017 data record. Some of these combined stations were the same station that had been assigned a different climate ID by ECCC for various reasons. Other climate ID stations were located within a few hundred metres of the original station by various partners. Other locations were located further but met the same conditions discussed in point 3 above.  
   
